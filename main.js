@@ -49,7 +49,7 @@ let model = {
 	shipLength: 3,
 	fire: function (guess) {
 		for (let i = 0; i < this.numShips; i++) {
-			let index = this.ships[i].locations.indexOf(guess)
+			let index = this.ships[i].locations.indexOf(parseInt(guess))
 			if (index >= 0) {
 				this.ships[i].hits[index] = "hit"
 				view.displayHit(guess)
@@ -78,16 +78,19 @@ let model = {
 				locations = this.generateShip()
 			} while (this.collision(locations))
 			console.log(locations[0])
+			console.log(locations[1])
+			console.log(locations[2])
 			this.ships[i].locations = locations
 		}
 	},
 	generateShip: function () {
 		let locationsGetter = {
 			getRawStartLocation: function () {
-				let arrSize = this.boardSize - (this.shipLength - 1)
+				let arrSize = model.boardSize - (model.shipLength - 1)
 				let rowArray = []
+				let countedSqueres = model.boardSize * model.boardSize
 
-				for (let j = 0; j < this.boardSize * this.boardSize; j + this.boardSize) {
+				for (let j = 0; j < countedSqueres; j = j + model.boardSize) {
 					for (let i = 0; i < arrSize; i++) {
 						rowArray.push(i + j)
 					}
@@ -96,7 +99,7 @@ let model = {
 				return rowArray[Math.floor(Math.random() * rowArray.length)]
 			},
 			getColumnStartLocation: function () {
-				let arrSize = this.boardSize * this.boardSize - this.boardSize * (this.shipLength - 1)
+				let arrSize = model.boardSize * model.boardSize - model.boardSize * (model.shipLength - 1)
 				let columnArray = []
 
 				for (let i = 0; i < arrSize; i++) {
