@@ -1,0 +1,34 @@
+html,
+body,
+main {
+	height: 100%;
+}
+main {
+	display: flex;
+}
+.wrapper {
+	display: grid;
+	background-color: pink;
+	grid-template-columns: repeat(7, 1fr);
+	width: 75%;
+	height: 90%;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+.squere {
+	border: 0.5px solid black;
+}
+.squere:hover {
+	background-color: purple;
+	opacity: 0.4;
+}
+.squere > p {
+	opacity: 0;
+}
+
+.resultWrapper {
+	margin: 20px;
+	padding: 20px;
+	background-color: rgb(238, 238, 238);
+	width: 25%;
+}
